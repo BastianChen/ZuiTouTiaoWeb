@@ -74,9 +74,9 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //大标题
-                .title("包含媒体、咨询、搜索引擎关键字、广告等类型接口的服务")
+                .title("最头条API接口")
                 //描述
-                .description("包含媒体、咨询、搜索引擎关键字、广告等类型接口的服务")
+                .description("最头条API接口")
                 //版本
                 .version("1.0")
                 .build();
