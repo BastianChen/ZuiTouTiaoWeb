@@ -3,8 +3,9 @@ package com.cb.web.zuitoutiao;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = MongoAutoConfiguration.class)
 @MapperScan("com.cb.web.zuitoutiao.dao")
 public class ZuitoutiaoApplication {
 

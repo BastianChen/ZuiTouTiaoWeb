@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -39,35 +41,46 @@ public class SwaggerConfig {
 //    }
 
 
+//    @Bean
+//    public Docket createRestApi() {
+//        Predicate<RequestHandler> predicate = new Predicate<RequestHandler>() {
+//            @Override
+//            public boolean apply(RequestHandler input) {
+//                Class<?> declaringClass = input.declaringClass();
+//                // 排除
+//                if (declaringClass == BasicErrorController.class)
+//                {
+//                    return false;
+//                }
+//                // 被注解的类
+//                if(declaringClass.isAnnotationPresent(RestController.class))
+//                {
+//                    return true;
+//                }
+//                // 被注解的方法
+//                if(input.isAnnotatedWith(ResponseBody.class))
+//                {
+//                    return true;
+//                }
+//                return false;
+//            }
+//        };
+//        return new Docket(DocumentationType.SWAGGER_2)
+//                .apiInfo(apiInfo())
+//                .useDefaultResponseMessages(false)
+//                .select()
+//                .apis(predicate)
+//                .build();
+//    }
+
     @Bean
     public Docket createRestApi() {
-        Predicate<RequestHandler> predicate = new Predicate<RequestHandler>() {
-            @Override
-            public boolean apply(RequestHandler input) {
-                Class<?> declaringClass = input.declaringClass();
-                // 排除
-                if (declaringClass == BasicErrorController.class)
-                {
-                    return false;
-                }
-                // 被注解的类
-                if(declaringClass.isAnnotationPresent(RestController.class))
-                {
-                    return true;
-                }
-                // 被注解的方法
-                if(input.isAnnotatedWith(ResponseBody.class))
-                {
-                    return true;
-                }
-                return false;
-            }
-        };
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .useDefaultResponseMessages(false)
                 .select()
-                .apis(predicate)
+                //为当前包路径
+                .apis(RequestHandlerSelectors.basePackage("com.cb.web.zuitoutiao.controller"))
+                .paths(PathSelectors.any())
                 .build();
     }
 
