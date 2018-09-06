@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -54,7 +53,7 @@ public class ArticleController {
      * @Date: 2018/8/17
      */
     @Scheduled(cron="0 0/30 * * * ?")   //每半小时执行一次
-    //@PostConstruct  //项目启动时执行
+    @PostConstruct  //项目启动时执行
     public void insertArticle() throws IOException {
         logger.info("爬取资讯开始");
         for (int i = 0; i < UrlPath.paths.length; i++) {

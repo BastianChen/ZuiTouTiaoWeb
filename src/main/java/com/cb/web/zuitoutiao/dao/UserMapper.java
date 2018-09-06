@@ -141,4 +141,15 @@ public interface UserMapper {
      */
     @Update({"update user set password = #{password,jdbcType=VARCHAR} where id=#{id,jdbcType=INTEGER}"})
     void updatePassword(User user);
+
+    /**
+     * @Description: 根据用户id获取用户姓名
+     * @Param: [userId]
+     * @return: com.cb.web.zuitoutiao.entity.User
+     * @Author: Chen Ben
+     * @Date: 2018/9/6
+     */
+    @Select({"select user_name from user where id = #{userId,jdbcType=VARCHAR}"})
+    @Results({@Result(column = "user_name", property = "userName", jdbcType = JdbcType.VARCHAR),})
+    User getUserNameById(Integer userId);
 }

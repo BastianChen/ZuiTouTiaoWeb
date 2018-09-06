@@ -57,7 +57,7 @@ public class UserController {
      * @Author: Chen Ben
      * @Date: 2018/8/20
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     @ApiOperation(value="登陆接口", notes="登陆")
     public Map<String, Object> login(@ApiParam(required=true, name="accountName", value="账号")
@@ -105,7 +105,7 @@ public class UserController {
      * @Author: Chen Ben
      * @Date: 2018/8/20
      */
-    @RequestMapping(value = "/loginByCode", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/loginByCode", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     @ApiOperation(value="根据手机验证码登陆接口", notes="根据手机验证码登陆")
     public Map<String, Object> loginByCode(@ApiParam(required=true, name="tel", value="手机号")

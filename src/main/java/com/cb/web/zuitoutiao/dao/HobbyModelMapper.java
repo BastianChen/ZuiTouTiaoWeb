@@ -24,23 +24,35 @@ public interface HobbyModelMapper {
     void insertHobbyModel(HobbyModel hobbyModel);
 
     /**
-    * @Description: 根据用户id搜索出用户的兴趣模型
-    * @Param: [userId]
-    * @return: com.cb.web.entity.HobbyModel
-    * @Author: Chen Ben
-    * @Date: 2018/8/27
-    */
+     * @Description: 根据用户id搜索出用户的兴趣模型
+     * @Param: [userId]
+     * @return: com.cb.web.entity.HobbyModel
+     * @Author: Chen Ben
+     * @Date: 2018/8/27
+     */
     @Select({"select * from hobby_model where user_id=#{userId,jdbcType=INTEGER}"})
-    @Results({@Result(column = "user_id", property = "userId", jdbcType = JdbcType.INTEGER),})
+    @Results({@Result(column = "user_id", property = "userId", jdbcType = JdbcType.INTEGER),
+            @Result(column = "hobby1_name", property = "hobby1Name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "hobby1_rate", property = "hobby1Rate", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "hobby2_name", property = "hobby2Name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "hobby2_rate", property = "hobby2Rate", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "hobby3_name", property = "hobby3Name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "hobby3_rate", property = "hobby3Rate", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "hobby4_name", property = "hobby4Name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "hobby4_rate", property = "hobby4Rate", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "hobby5_name", property = "hobby5Name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "hobby5_rate", property = "hobby5Rate", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "hobby6_name", property = "hobby6Name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "hobby6_rate", property = "hobby6Rate", jdbcType = JdbcType.DECIMAL),})
     HobbyModel getHobbyModel(Integer userId);
 
-    /** 
-    * @Description: 更新用户的兴趣模型 
-    * @Param: [hobbyModel] 
-    * @return: void 
-    * @Author: Chen Ben 
-    * @Date: 2018/8/27 
-    */ 
+    /**
+     * @Description: 更新用户的兴趣模型
+     * @Param: [hobbyModel]
+     * @return: void
+     * @Author: Chen Ben
+     * @Date: 2018/8/27
+     */
     @Update({"update hobby_model set hobby1_name = #{hobby1Name,jdbcType=DECIMAL},hobby1_rate = #{hobby1Rate,jdbcType=DECIMAL}," +
             "hobby1_name = #{hobby1Name,jdbcType=VARCHAR},hobby1_rate = #{hobby1Rate,jdbcType=DECIMAL}," +
             "hobby2_name = #{hobby2Name,jdbcType=VARCHAR},hobby2_rate = #{hobby2Rate,jdbcType=DECIMAL}," +
