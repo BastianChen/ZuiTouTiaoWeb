@@ -15,12 +15,19 @@ public class RootController {
     public String index(){
         return "test";
     }
+
     @RequestMapping("/login")
     public String login(){
         return "login";
     }
+
     @RequestMapping("/image")
     public String image(){
         return "image";
+    }
+
+    @RequestMapping("/index")
+    public String userIndex() {
+        return "test";
     }
 }

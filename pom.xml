@@ -144,22 +144,20 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!--排除默认的日志 -->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter</artifactId>-->
-            <!--<exclusions>-->
+            <!--<artifactId>spring-boot-starter-web</artifactId>-->
+            <!--<exclusions>&lt;!&ndash; 去掉默认配置 &ndash;&gt;-->
                 <!--<exclusion>-->
                     <!--<groupId>org.springframework.boot</groupId>-->
                     <!--<artifactId>spring-boot-starter-logging</artifactId>-->
                 <!--</exclusion>-->
             <!--</exclusions>-->
         <!--</dependency>-->
-        <!--启用log4j日志 -->
+        <!--&lt;!&ndash; 引入log4j2依赖 &ndash;&gt;-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-log4j</artifactId>-->
-            <!--<version>1.2.8.RELEASE</version>-->
+            <!--<artifactId>spring-boot-starter-log4j2</artifactId>-->
         <!--</dependency>-->
     </dependencies>
 
@@ -171,6 +169,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

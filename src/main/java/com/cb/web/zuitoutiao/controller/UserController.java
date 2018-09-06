@@ -152,20 +152,6 @@ public class UserController {
     }
 
     /**
-     * @Description: 用户主页
-     * @Param: []
-     * @return: java.lang.String
-     * @Author: Chen Ben
-     * @Date: 2018/9/3
-     */
-    @ApiIgnore
-    @RequestMapping("/index")
-    public String userIndex() {
-        logger.info("拦截器开始拦截");
-        return "test";
-    }
-
-    /**
      * @Description: 修改用户个人信息
      * @Param: [user]
      * @return: void

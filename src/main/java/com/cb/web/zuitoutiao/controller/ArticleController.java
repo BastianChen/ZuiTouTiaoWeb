@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,7 +53,7 @@ public class ArticleController {
      * @Author: Chen Ben
      * @Date: 2018/8/17
      */
-    //@Scheduled(cron="0 0/30 * * * ?")   //每半小时执行一次
+    @Scheduled(cron="0 0/30 * * * ?")   //每半小时执行一次
     //@PostConstruct  //项目启动时执行
     public void insertArticle() throws IOException {
         logger.info("爬取资讯开始");
