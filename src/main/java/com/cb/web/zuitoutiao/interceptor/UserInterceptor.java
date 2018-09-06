@@ -121,7 +121,7 @@ public class UserInterceptor implements HandlerInterceptor {
                     }
                 }
             }
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/login");
             return false;
         }
     }
