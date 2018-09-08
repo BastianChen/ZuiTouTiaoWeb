@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最头条图片模块</title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/templatePic.css"/>
+    <script src="js/lib/jquery-3.2.1.js"></script>
+</head>
+<body>
+
+<div class="g-container" style="width: 100%;height: auto;">
+	<header title="头部导航条" class="g-minwidth" id="header" name="header">
+    </header>
+    <script src="js/pic_header.js"></script>
+    <!--<div class="topbarWrapper">
+        <ul class="left topNav">
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >推荐</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >热点</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >视频</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >图片</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >社会</a
+            ></li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >娱乐</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >科技</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >汽车</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >体育</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >财经</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >军事</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="/news_world/" target="_blank" >国际</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >时尚</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank" >旅游</a>
+            </li>
+            <li class="tb-item left-nav" data-node="moreNav">
+                <a class="tb-link moreNav" href="javascript:;" >更多</a>
+                <div class="nav-layer">
+                    <ul>
+                        <li>
+                            <a href="#" class="layer-item" >探索</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" >育儿</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" >养生</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" >故事</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item">美文</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" >游戏</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" >历史</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item">美食</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <ul class="right">
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank">头条号</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#" target="_blank">图虫</a>
+            </li>
+            <li class="tb-item">
+                <a class="tb-link" href="#">反馈</a>
+            </li>
+            <li class="tb-item right-more" data-node="more">
+                <a class="tb-link" href="#">更多</a>
+                <div class="layer">
+                    <ul>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">关于头条</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">加入头条</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">头条  Lab</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">媒体报道</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">媒体合作</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">产品合作</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">合作说明</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">联系我们</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">用户协议</a>
+                        </li>
+                        <li>
+                            <a href="#" class="layer-item" rel="nofollow">投诉指引</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>-->
+    <div class="midbar-wrapper">
+        <div class="midbar-inner g-c">
+        	<a href="index.html">
+            	<img src="images/logo.png" class="inner-logo left"/>
+            </a>
+            <!--搜索框-->
+            <div class="s-form right">
+                <div class="s-form-center">
+                    <input type="text" placeholder="请输入关键字" class="s-input"/>
+                    <a class="s-search"><img src="images/ic_serach_pub.png"/></a>
+                </div>
+                <ul class="s-search-lianxiang">
+                    <li class="search-item">
+                        <a href="#">
+                            <i class="search-no search-no-1">1</i>
+                            <span class="search-txt">关晓彤曝代言微商</span>
+                        </a>
+                    </li>
+                    <li class="search-item">
+                        <a href="#">
+                            <i class="search-no search-no-2">2</i>
+                            <span class="search-txt">20押金引发血案</span>
+                        </a>
+                    </li>
+                    <li class="search-item">
+                        <a href="#">
+                            <i class="search-no search-no-3">3</i>
+                            <span class="search-txt">举债2500万自杀</span>
+                        </a>
+                    </li>
+                    <li class="search-item">
+                        <a href="#">
+                            <i class="search-no search-no-4">4</i>
+                            <span class="search-txt">的哥开车看电子书</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <!--列表新闻导航-->
+    <div class="news-nav-zhanwei" style="width: 100%;height: 40px;box-shadow: 0 0 2px 2px #d9d9d9;background-color: #FFFFFF;z-index: 10;">
+        <div style="width: 1000px;margin: 0 auto;height: 40px;text-align: center">
+            <ul class="g-c hidden-nav-ul" style="width: auto;height:40px;display: inline-block;">
+                <li class="news-li-active"><a href="#">全部</a></li>
+                <li><a href="#">老照片</a></li>
+                <li><a href="#">图片故事</a></li>
+                <li><a href="#">摄影集</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="news-nav" style="width: 1000px;margin: 15px auto">
+        <ul class="g-c">
+            <li class="news-li-active"><a href="#">全部</a></li>
+            	<li><a href="#">老照片</a></li>
+                <li><a href="#">图片故事</a></li>
+                <li><a href="#">摄影集</a></li>
+        </ul>
+    </div>
+    <div class="pic-item-all">
+        <div class="pic-item-inner">
+            <ul class="g-c pic-item-ul" >
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <<img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                               <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                           <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                           <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                           <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                 <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/xijinping.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/zjh.png" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/pic_tempalte_thr.jpg" class="tem_pic_one"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="pic-item-cont">
+                            <img src="images/inner_6.jpg" class="tem_two_1"/>
+                            <img src="images/inner_4.jpg" class="tem_two_2"/>
+                            <img src="images/inner_5.jpg" class="tem_two_3"/>
+                            <span>15图</span>
+                        </div>
+                        <p class="pic-item-text">习近平眼中的合格党员</p>
+                        <p class="extra">
+                            <span>人民网&nbsp;⋅</span>
+                            <span> 170评论&nbsp;⋅</span>
+                            <span>2018-06-30 07:49</span>
+                        </p>
+                    </a>
+                </li>
+
+
+
+
+
+            </ul>
+        </div>
+		<div class="back-top">
+             <span class="top-sam">刷新</span>
+             <a class="top-sam" href="#header">向上</a>
+        </div>
+    </div>
+</div>
+<script src="js/index.js"></script>
+<script src="js/templatePic.js"></script>
+<script>
+    let $newsNav = $('.news-nav');
+    let $newsNavTop = $newsNav.offset().top;
+    let $newsNavHeight = $newsNav.outerHeight(true);
+    let $newsNavZhanWei = $('.news-nav-zhanwei');
+    let windowBarTop;
+    $(window).scroll(function (e) {
+      windowBarTop = $(document).scrollTop();
+      if(windowBarTop >= $newsNavTop+$newsNavHeight){
+        $newsNavZhanWei.css({'display':'block','position':'fixed','top':'0'});
+      }else{
+        $newsNavZhanWei.css('display','none');
+      }
+    });
+</script>
+</body>
+</html>

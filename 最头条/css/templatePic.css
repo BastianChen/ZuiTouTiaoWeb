@@ -1,0 +1,210 @@
+
+/*头部*/
+.topbarWrapper {
+    position: relative;
+    width: 100%;
+    min-width: 1220px;
+    height: 24px;
+    line-height: 24px;
+    background: #222;
+    color: #fff;
+    font-size: 13px;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.tb-item {
+    position: relative;
+    float: left;
+}
+.tb-link {
+    padding: 0 16px;
+    border-color: rgba(255,255,255,.4);
+    color: #fff;
+}
+
+.tb-item:first-child>.tb-link {
+    border: 0;
+}
+.moreNav {
+    position: relative;
+    cursor: default;
+}
+.moreNav:before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 4px;
+    right: 0;
+    top: 50%;
+    margin-top: -2px;
+    background: url(//s3.pstatp.com/toutiao/resource/toutiao_web/static/style/image/newindex/nav_arrow_down_1908aa1.png?__sprite) no-repeat center;
+}
+.nav-layer {
+    position: absolute;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    z-index: 200;
+    font-size: 14px;
+    left: 50%;
+    margin-left: -41px;
+    width: 80px;
+    padding-top: 10px;
+    display: none;
+}
+.layer-item {
+    cursor: pointer;
+    display: block;
+    width: auto;
+    height: 42px;
+    line-height: 42px;
+    color: #999;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+}
+
+.layer {
+    position: absolute;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    z-index: 200;
+    font-size: 14px;
+    right: 0;
+    width: 130px;
+    padding-top: 10px;
+    display: none;
+}
+.layer-item:hover{
+    background-color: #d9d9d9;
+    color: #ffffff;
+}
+.tb-item>a:hover{color: #d9d9d9;}
+
+/*头部下面的搜索块*/
+.midbar-wrapper{
+    width: 100%;
+    height: 58px;
+    box-shadow: 0 0 2px 2px #d9d9d9;
+}
+.midbar-inner{
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+    height: 58px;
+}
+.inner-logo{
+    width: 108px;
+    height: 27px;
+    margin-top: 15px;
+    vertical-align: middle;
+}
+.s-form{
+    vertical-align: middle;
+    margin-bottom: 0;
+    margin-top: 9px;
+    margin-left: 22px;
+}
+.login-in{
+    vertical-align: middle;
+    line-height: 58px;
+    color: #444444;
+}
+.login-in:hover{
+    color: #7696b3;
+}
+.pic-item-all{
+    width: 100%;
+}
+.pic-item-inner {
+    width: 1000px;
+    margin: auto;
+    margin-top: 5px;
+}
+.pic-item-ul{
+    width: 1016px;
+}
+.pic-item-ul>li{
+    float: left;
+    display: block;
+    width: 238px;
+    height: 204px;
+    margin-right: 16px;
+    margin-bottom: 46px;
+}
+.pic-item-cont{
+    position: relative;
+    width: 238px;
+    height: 136px;
+}
+.tem_pic_one{
+    position: absolute;
+    width: 238px;
+    height: 136px;
+    left: 0;
+    top: 0;
+}
+.pic-item-cont>span{
+    display: block;
+    position: absolute;
+    width: 42px;
+    height: 20px;
+    background: rgba(0,0,0,.5);
+    border-radius: 10px;
+    text-align: center;
+    line-height: 20px;
+    color: #ffffff;
+    bottom: 7px;
+    left: 189px;
+    font-size: 14px;
+}
+.pic-item-text{
+    font-size: 14px;
+    color: #444;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 12px;
+}
+.extra {
+    padding-top: 10px;
+    color: #999;
+}
+.extra>span{
+    font-size: 12px;
+}
+.tem_two_1{
+    position: absolute;
+    width: 136px;
+    height: 136px;
+    left: 0;
+    top: 0;
+}
+.tem_two_2{
+    width: 100px;
+    height: 67px;
+    position: absolute;
+    left: 138px;
+    top: 0;
+}
+.tem_two_3{
+    width: 100px;
+    height: 67px;
+    position: absolute;
+    left: 138px;
+    top:69px;
+}
+.hidden-nav-ul>li{
+    float: left;
+    line-height: 37px;
+    margin-left: 33px;
+}
+.hidden-nav-ul li:nth-child(1){
+    margin-left: 0;
+}
