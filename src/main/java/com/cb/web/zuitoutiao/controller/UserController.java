@@ -41,7 +41,7 @@ public class UserController {
     @RequestMapping(value = "/regist", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "注册成功"), @ApiResponse(code = 400, message = "接口异常"),})
     @ResponseBody
-    @ApiOperation(value="注册接口", notes="注册")
+    @ApiOperation(value="注册接口", notes="注册(id、image以及type不需要在前端填写)")
     public Map<String, Object> regist(@ApiParam(name="accountName", value = "用户" ,required=true ) @RequestBody User user) {
         logger.info("注册");
         Map<String, Object> resultMap = new HashMap<String, Object>();
