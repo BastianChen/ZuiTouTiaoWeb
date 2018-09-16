@@ -46,7 +46,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User regist(User user) {
         user.setPassword(EncryptionUtil.md5Hex(user.getAccountName() + user.getPassword()));
-        user.setImage("static/images/weixin.jpg");
+        user.setImage("/images/weixin.jpg");
+        user.setType("0");
         user.setTotalTimes(0.0);
         userMapper.regist(user);
         User user1 = userMapper.selectByAccountName(user.getAccountName());
