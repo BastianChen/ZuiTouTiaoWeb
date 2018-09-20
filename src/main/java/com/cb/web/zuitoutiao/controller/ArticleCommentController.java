@@ -24,6 +24,7 @@ import java.util.Map;
  * @author: YFZX-CB-1784 ChenBen
  * @create: 2018-08-20 14:31
  **/
+@CrossOrigin(origins = "http://localhost:8081")
 @Controller
 @Api(value = "ArticleComment",description = "资讯评论接口")
 @RequestMapping(value = "/ArticleComment")

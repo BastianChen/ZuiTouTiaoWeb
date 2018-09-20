@@ -15,10 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -29,7 +26,7 @@ import java.util.Map;
  * @author YFZX-CB-1784 ChenBen
  * @create 2018-08-16 11:14
  **/
-
+@CrossOrigin(origins = "http://localhost:8081")
 @Controller
 @Api(value = "Article",description = "资讯接口")
 @RequestMapping(value = "/Article")

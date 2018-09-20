@@ -21,6 +21,7 @@ import java.util.Map;
  * @author: YFZX-CB-1784 ChenBen
  * @create: 2018-09-04 15:58
  **/
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @Api(value = "User",description = "用户接口")
 @RequestMapping("/User")
