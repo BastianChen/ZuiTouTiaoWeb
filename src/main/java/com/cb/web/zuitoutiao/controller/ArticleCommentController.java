@@ -71,7 +71,7 @@ public class ArticleCommentController {
      */
     @RequestMapping(value = "/getComment", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ResponseBody
-    @ApiOperation(value="获取资讯评论接口", notes="根据资讯id获取资讯的所有评论及其子评论, articleCommentList为该资讯的所有父评论，commentJsonArray为所有子评论")
+    @ApiOperation(value="获取资讯评论接口", notes="根据资讯id获取资讯的所有评论及其子评论, articleCommentList为该资讯的所有父评论，commentList为所有子评论")
     public Map<String, Object> getComment(@ApiParam(required=true, name="id", value="资讯id")
                                           @RequestParam(value = "id", required = true) Integer id) {
         logger.info("获取资讯评论");
