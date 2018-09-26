@@ -142,15 +142,18 @@ public class ArticleController {
      * @Author: Chen Ben
      * @Date: 2018/8/20
      */
-    @RequestMapping(value = "/updateLikes", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
-    @ApiOperation(value="点赞接口", notes="点赞")
+    @RequestMapping(value = "/updateLikes", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public void updateLikes(@ApiParam(required=true, name="articleId", value="资讯id")
+    @ApiOperation(value="点赞接口", notes="点赞")
+    public Map<String, Object> updateLikes(@ApiParam(required=true, name="articleId", value="资讯id")
                             @RequestParam(value = "articleId", required = true) Integer articleId,
                             @ApiParam(required=false, name="userId", value="用户id")
                             @RequestParam(value = "userId", required = false) Integer userId) throws IOException {
         logger.info("点赞成功");
-        articleService.updateLikes(articleId, userId);
+        Map<String, Object> resultMap = new HashMap<>();
+        Integer likes = articleService.updateLikes(articleId, userId);
+        resultMap.put("likes",likes);
+        return resultMap;
     }
 
     /**
@@ -160,15 +163,18 @@ public class ArticleController {
      * @Author: Chen Ben
      * @Date: 2018/8/20
      */
-    @RequestMapping(value = "/updateDislikes", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
+    @RequestMapping(value = "/updateDislikes", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="点踩接口", notes="点踩")
     @ResponseBody
-    public void updateDislikes(@ApiParam(required=true, name="articleId", value="资讯id")
+    public Map<String, Object> updateDislikes(@ApiParam(required=true, name="articleId", value="资讯id")
                                @RequestParam(value = "articleId", required = true) Integer articleId,
                                @ApiParam(required=false, name="userId", value="用户id")
                                @RequestParam(value = "userId", required = false) Integer userId) {
         logger.info("点踩成功");
-        articleService.updateDislikes(articleId, userId);
+        Map<String, Object> resultMap = new HashMap<>();
+        Integer dislikes = articleService.updateDislikes(articleId, userId);
+        resultMap.put("dislikes",dislikes);
+        return resultMap;
     }
 
     /**

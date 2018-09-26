@@ -93,17 +93,19 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
      * @Date: 2018/8/21
      */
     @Override
-    public void updateLikes(Integer id, Integer type) {
+    public Integer updateLikes(Integer id, Integer type) {
         if (type == null) {
             logger.info("给父评论点赞成功");
             ArticleComment articleComment = articleCommentMapper.getArticleCommentById(id);
             articleComment.setLikes(articleComment.getLikes() + UrlPath.number);
             articleCommentMapper.updateLikes(articleComment);
+            return articleComment.getLikes() + UrlPath.number;
         } else {
             logger.info("给子评论点赞成功");
             Comment comment = commentMapper.getConmmentById(id);
             comment.setLikes(comment.getLikes() + UrlPath.number);
             commentMapper.updateLikes(comment);
+            return comment.getLikes();
         }
     }
 
@@ -115,17 +117,19 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
      * @Date: 2018/8/21
      */
     @Override
-    public void updateDislikes(Integer id, Integer type) {
+    public Integer updateDislikes(Integer id, Integer type) {
         if (type == null) {
             logger.info("给父评论点踩成功");
             ArticleComment articleComment = articleCommentMapper.getArticleCommentById(id);
             articleComment.setDislikes(articleComment.getDislikes() + UrlPath.number);
             articleCommentMapper.updateDislikes(articleComment);
+            return articleComment.getDislikes() + UrlPath.number;
         } else {
             logger.info("给子评论点踩成功");
             Comment comment = commentMapper.getConmmentById(id);
             comment.setDislikes(comment.getDislikes() + UrlPath.number);
             commentMapper.updateDislikes(comment);
+            return comment.getDislikes();
         }
     }
 }

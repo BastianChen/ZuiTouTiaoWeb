@@ -17,9 +17,9 @@ public interface ArticleService {
 
     void updateFangwenliang(Integer id);
 
-    void updateLikes(Integer articleId, Integer userId) throws IOException;
+    Integer updateLikes(Integer articleId, Integer userId) throws IOException;
 
-    void updateDislikes(Integer articleId, Integer userId);
+    Integer updateDislikes(Integer articleId, Integer userId);
 
     JSONArray searchArticle(String search, Integer start);
 }

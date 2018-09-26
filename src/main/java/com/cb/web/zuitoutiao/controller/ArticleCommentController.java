@@ -42,10 +42,14 @@ public class ArticleCommentController {
      */
     @RequestMapping(value = "/addArticleComment", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="添加资讯评论接口", notes="添加资讯评论（createDate不用填）")
-    public void addArticleComment(@ApiParam(required=true, name="articleComment", value="资讯评论")
+    @ResponseBody
+    public Map<String, Object> addArticleComment(@ApiParam(required=true, name="articleComment", value="资讯评论")
                                   @RequestBody ArticleComment articleComment) {
         logger.info("评论资讯");
+        Map<String, Object> resultMap = new HashMap<String, Object>();
         articleCommentService.addComment(articleComment);
+        resultMap.put("articleComment",articleComment);
+        return resultMap;
     }
 
     /**
@@ -57,9 +61,13 @@ public class ArticleCommentController {
      */
     @RequestMapping(value = "/addSubreview", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="添加子评论接口", notes="添加子评论（createDate不用填）")
-    public void addSubreview( @RequestBody Comment comment) {
+    @ResponseBody
+    public Map<String, Object> addSubreview( @RequestBody Comment comment) {
         logger.info("添加子评论");
+        Map<String, Object> resultMap = new HashMap<String, Object>();
         articleCommentService.addSubreview(comment);
+        resultMap.put("comment",comment);
+        return resultMap;
     }
 
     /**
@@ -99,12 +107,15 @@ public class ArticleCommentController {
     @RequestMapping(value = "/updateLikes", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="评论点赞接口", notes="根据评论的id以及type属性的值来辨别是给父评论进行点赞还是给子评论进行点赞")
     @ResponseBody
-    public void updateLikes(@ApiParam(required=true, name="id", value="评论id")
+    public Map<String, Object> updateLikes(@ApiParam(required=true, name="id", value="评论id")
                             @RequestParam(value = "id", required = true) Integer id,
                             @ApiParam(required=false, name="type", value="资讯类型（type为null时为给父评论点赞，type不为null时为给子评论点赞）")
                             @RequestParam(value = "type", required = false) Integer type) {
         logger.info("给评论点赞");
-        articleCommentService.updateLikes(id, type);
+        Map<String, Object> resultMap = new HashMap<>();
+        Integer likes = articleCommentService.updateLikes(id, type);
+        resultMap.put("likes",likes);
+        return resultMap;
     }
 
     /**
@@ -117,12 +128,15 @@ public class ArticleCommentController {
     @RequestMapping(value = "/updateDislikes", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="评论点踩接口", notes="根据评论的id以及type属性的值来辨别是给父评论进行点踩还是给子评论进行点踩")
     @ResponseBody
-    public void updateDislikes(@ApiParam(required=true, name="id", value="评论id")
+    public Map<String, Object> updateDislikes(@ApiParam(required=true, name="id", value="评论id")
                                @RequestParam(value = "id", required = true) Integer id,
                                @ApiParam(required=false, name="type", value="资讯类型（type为null时为给父评论点踩，type不为null时为给子评论点踩）")
                                @RequestParam(value = "type", required = false) Integer type) {
         logger.info("给评论点踩");
-        articleCommentService.updateDislikes(id, type);
+        Map<String, Object> resultMap = new HashMap<>();
+        Integer dislikes = articleCommentService.updateDislikes(id, type);
+        resultMap.put("dislikes",dislikes);
+        return resultMap;
     }
 
     /**

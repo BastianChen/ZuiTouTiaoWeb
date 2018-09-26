@@ -322,7 +322,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @Date: 2018/8/20
      */
     @Override
-    public void updateLikes(Integer articleId, Integer userId) {
+    public Integer updateLikes(Integer articleId, Integer userId) {
         Article article = articleMapper.getArticleById(articleId);
         article.setLikes(article.getLikes() + UrlPath.number);
         articleMapper.updateLikes(article);
@@ -356,6 +356,7 @@ public class ArticleServiceImpl implements ArticleService {
                 }
             }
         }
+        return article.getLikes();
     }
 
     /**
@@ -366,7 +367,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @Date: 2018/8/20
      */
     @Override
-    public void updateDislikes(Integer articleId, Integer userId) {
+    public Integer updateDislikes(Integer articleId, Integer userId) {
         Article article = articleMapper.getArticleById(articleId);
         article.setDislikes(article.getDislikes() + UrlPath.number);
         articleMapper.updateDislikes(article);
@@ -400,6 +401,7 @@ public class ArticleServiceImpl implements ArticleService {
                 }
             }
         }
+        return article.getDislikes();
     }
 
     /**
