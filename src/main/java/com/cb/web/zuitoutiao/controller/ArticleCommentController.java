@@ -63,7 +63,7 @@ public class ArticleCommentController {
     }
 
     /**
-     * @Description: 根据资讯id获取资讯的所有评论及其子评论, articleCommentList为该资讯的所有父评论，commentJsonArray为所有子评论
+     * @Description: 根据资讯id获取资讯的所有评论及其子评论, articleCommentList为该资讯的所有父评论，commentList为所有子评论
      * @Param: [id]
      * @return: java.util.Map<java.lang.String,java.lang.Object>
      * @Author: Chen Ben
@@ -98,6 +98,7 @@ public class ArticleCommentController {
      */
     @RequestMapping(value = "/updateLikes", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="评论点赞接口", notes="根据评论的id以及type属性的值来辨别是给父评论进行点赞还是给子评论进行点赞")
+    @ResponseBody
     public void updateLikes(@ApiParam(required=true, name="id", value="评论id")
                             @RequestParam(value = "id", required = true) Integer id,
                             @ApiParam(required=false, name="type", value="资讯类型（type为null时为给父评论点赞，type不为null时为给子评论点赞）")
@@ -115,11 +116,31 @@ public class ArticleCommentController {
      */
     @RequestMapping(value = "/updateDislikes", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="评论点踩接口", notes="根据评论的id以及type属性的值来辨别是给父评论进行点踩还是给子评论进行点踩")
+    @ResponseBody
     public void updateDislikes(@ApiParam(required=true, name="id", value="评论id")
                                @RequestParam(value = "id", required = true) Integer id,
                                @ApiParam(required=false, name="type", value="资讯类型（type为null时为给父评论点踩，type不为null时为给子评论点踩）")
                                @RequestParam(value = "type", required = false) Integer type) {
         logger.info("给评论点踩");
         articleCommentService.updateDislikes(id, type);
+    }
+
+    /**
+     * @Description: 根据父评论的id获取相应的子评论
+     * @Param [commentId]
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     * @Author: Chen Ben
+     * @Date 2018/9/26/026
+     */
+    @RequestMapping(value = "/getSubreview", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
+    @ApiOperation(value="获取子评论接口", notes="根据父评论的id获取相应的子评论")
+    @ResponseBody
+    public Map<String, Object> getSubreview(@ApiParam(required=true, name="commentId", value="父评论id")
+                                            @RequestParam(value = "commentId", required = true) Integer commentId){
+        logger.info("获取id为"+commentId+"的子评论");
+        Map<String, Object> resultMap = new HashMap<>();
+        List<Comment> commentList = articleCommentService.getCommentListById(commentId);
+        resultMap.put("commentList",commentList);
+        return resultMap;
     }
 }

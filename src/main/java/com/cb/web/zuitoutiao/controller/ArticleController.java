@@ -144,6 +144,7 @@ public class ArticleController {
      */
     @RequestMapping(value = "/updateLikes", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
     @ApiOperation(value="点赞接口", notes="点赞")
+    @ResponseBody
     public void updateLikes(@ApiParam(required=true, name="articleId", value="资讯id")
                             @RequestParam(value = "articleId", required = true) Integer articleId,
                             @ApiParam(required=false, name="userId", value="用户id")
@@ -161,6 +162,7 @@ public class ArticleController {
      */
     @RequestMapping(value = "/updateDislikes", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
     @ApiOperation(value="点踩接口", notes="点踩")
+    @ResponseBody
     public void updateDislikes(@ApiParam(required=true, name="articleId", value="资讯id")
                                @RequestParam(value = "articleId", required = true) Integer articleId,
                                @ApiParam(required=false, name="userId", value="用户id")
