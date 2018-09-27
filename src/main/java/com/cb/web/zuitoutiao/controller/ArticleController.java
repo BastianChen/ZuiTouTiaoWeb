@@ -149,7 +149,6 @@ public class ArticleController {
                             @RequestParam(value = "articleId", required = true) Integer articleId,
                             @ApiParam(required=false, name="userId", value="用户id")
                             @RequestParam(value = "userId", required = false) Integer userId) throws IOException {
-        logger.info("点赞成功");
         Map<String, Object> resultMap = new HashMap<>();
         Integer likes = articleService.updateLikes(articleId, userId);
         resultMap.put("likes",likes);

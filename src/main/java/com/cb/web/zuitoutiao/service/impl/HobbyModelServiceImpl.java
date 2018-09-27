@@ -33,9 +33,13 @@ public class HobbyModelServiceImpl implements HobbyModelService {
     public UserHobbyModelDTO getUserHobbyModel(Integer userId) {
         UserHobbyModelDTO userHobbyModelDTO = new UserHobbyModelDTO();
         HobbyModel hobbyModel = hobbyModelMapper.getHobbyModel(userId);
-        User user = userMapper.getUserNameById(userId);
-        BeanUtils.copyProperties(hobbyModel, userHobbyModelDTO);
-        userHobbyModelDTO.setUserName(user.getUserName());
-        return userHobbyModelDTO;
+        if(hobbyModel!=null){
+            User user = userMapper.getUserNameById(userId);
+            BeanUtils.copyProperties(hobbyModel, userHobbyModelDTO);
+            userHobbyModelDTO.setUserName(user.getUserName());
+            return userHobbyModelDTO;
+        }else {
+            return userHobbyModelDTO;
+        }
     }
 }

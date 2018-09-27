@@ -65,11 +65,11 @@ public class UserServiceImpl implements UserService {
     public Map<String, Object> getUser(String accountName, String password, boolean rememberMe, HttpServletResponse response) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         User user1 = userMapper.selectByAccountName(accountName);
-        if(user1 ==null){
+        if (user1 == null) {
             logger.info("不存在该用户");
-            resultMap.put("user","不存在该用户");
+            resultMap.put("user", "不存在该用户");
             return resultMap;
-        }else {
+        } else {
             password = EncryptionUtil.md5Hex(accountName + password);
             User user = userMapper.getUser(accountName, password);
             if (user != null && rememberMe == true) {
@@ -109,15 +109,15 @@ public class UserServiceImpl implements UserService {
                 }
                 // 保存cookie
                 CookieUtils.addCookie(response, CookieConstantTable.RememberMe, cookieValue, null);
-                resultMap.put("user",user);
+                resultMap.put("user", user);
                 return resultMap;
-            }else if(user != null && rememberMe == false){
+            } else if (user != null && rememberMe == false) {
                 logger.info("登录成功");
-                resultMap.put("user",user);
+                resultMap.put("user", user);
                 return resultMap;
             } else {
                 logger.info("密码错误");
-                resultMap.put("user","密码错误");
+                resultMap.put("user", "密码错误");
                 return resultMap;
             }
         }
@@ -242,5 +242,18 @@ public class UserServiceImpl implements UserService {
     public void updatePassword(User user) {
         user.setPassword(EncryptionUtil.md5Hex(user.getAccountName() + user.getPassword()));
         userMapper.updatePassword(user);
+    }
+
+    /**
+     * @Description: 获取用户的总阅读数
+     * @Param: [userId]
+     * @return: java.lang.Integer
+     * @Author: Chen Ben
+     * @Date: 2018/9/27
+     */
+    @Override
+    public Integer getUserTotalTimes(Integer userId) {
+        Integer totalTimes = userMapper.getTotalTimes(userId);
+        return totalTimes;
     }
 }

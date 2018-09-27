@@ -30,4 +30,6 @@ public interface UserService {
     void updateUser(User user);
 
     void updatePassword(User user);
+
+    Integer getUserTotalTimes(Integer userId);
 }

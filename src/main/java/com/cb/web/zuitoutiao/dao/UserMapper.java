@@ -149,7 +149,11 @@ public interface UserMapper {
      * @Author: Chen Ben
      * @Date: 2018/9/6
      */
-    @Select({"select user_name from user where id = #{userId,jdbcType=VARCHAR}"})
+    @Select({"select user_name from user where id = #{userId,jdbcType=INTEGER}"})
     @Results({@Result(column = "user_name", property = "userName", jdbcType = JdbcType.VARCHAR),})
     User getUserNameById(Integer userId);
+
+    @Select({"select total_times from user where id = #{userId,jdbcType=INTEGER}"})
+    @Results({@Result(column = "total_times", property = "totalTimes", jdbcType = JdbcType.INTEGER),})
+    Integer getTotalTimes(Integer userId);
 }

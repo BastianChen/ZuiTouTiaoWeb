@@ -1,7 +1,9 @@
 package com.cb.web.zuitoutiao.controller;
 
 import com.cb.web.zuitoutiao.dto.UserHobbyModelDTO;
+import com.cb.web.zuitoutiao.entity.User;
 import com.cb.web.zuitoutiao.service.HobbyModelService;
+import com.cb.web.zuitoutiao.service.UserService;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +29,8 @@ import java.util.Map;
 public class HobbyModelController {
     @Autowired
     private HobbyModelService hobbyModelService;
+    @Autowired
+    private UserService userService;
     private Logger logger = LoggerFactory.getLogger(HobbyModelController.class);
 
     /**
@@ -44,7 +48,12 @@ public class HobbyModelController {
     public Map<String, Object> getHobbyModel(Integer userId) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         UserHobbyModelDTO userHobbyModelDTO = hobbyModelService.getUserHobbyModel(userId);
-        resultMap.put("userHobbyModelDTO",userHobbyModelDTO);
+        Integer totalTimes = userService.getUserTotalTimes(userId);
+        if(userHobbyModelDTO.getUserId()==null){
+            resultMap.put("userHobbyModelDTO","需要阅读20篇资讯才能生成兴趣模型哦!\n还需阅读"+(20-totalTimes)+"篇资讯");
+        }else {
+            resultMap.put("userHobbyModelDTO",userHobbyModelDTO);
+        }
         return resultMap;
     }
 }

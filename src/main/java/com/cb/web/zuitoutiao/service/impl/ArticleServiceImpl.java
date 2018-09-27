@@ -1,13 +1,11 @@
 package com.cb.web.zuitoutiao.service.impl;
 
-import com.cb.web.zuitoutiao.dao.ArticleMapper;
-import com.cb.web.zuitoutiao.dao.HobbyModelMapper;
-import com.cb.web.zuitoutiao.dao.TypeMapper;
-import com.cb.web.zuitoutiao.dao.UserReadMapper;
+import com.cb.web.zuitoutiao.dao.*;
 import com.cb.web.zuitoutiao.dto.ArticleDTO;
 import com.cb.web.zuitoutiao.dto.HobbyModelDTO;
 import com.cb.web.zuitoutiao.entity.Article;
 import com.cb.web.zuitoutiao.entity.HobbyModel;
+import com.cb.web.zuitoutiao.entity.UserArticleLikes;
 import com.cb.web.zuitoutiao.entity.UserRead;
 import com.cb.web.zuitoutiao.service.ArticleService;
 import com.cb.web.zuitoutiao.utils.MahoutUtil;
@@ -47,6 +45,8 @@ public class ArticleServiceImpl implements ArticleService {
     private HobbyModelMapper hobbyModelMapper;
     @Autowired
     private TypeMapper typeMapper;
+    @Autowired
+    private UserArticleLikesMapper userArticleLikesMapper;
     private Logger logger = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
     /**
@@ -315,7 +315,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * @Description: 增加点赞数
+     * @Description: 增加或撤销点赞数
      * @Param: [id]
      * @return: void
      * @Author: Chen Ben
@@ -323,16 +323,33 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Integer updateLikes(Integer articleId, Integer userId) {
+        boolean isLike;
+        UserArticleLikes userArticleLikes = userArticleLikesMapper.getUserArticleLikes(userId,articleId);
         Article article = articleMapper.getArticleById(articleId);
-        article.setLikes(article.getLikes() + UrlPath.number);
-        articleMapper.updateLikes(article);
+        if(userArticleLikes == null){
+            logger.info("点赞成功");
+            article.setLikes(article.getLikes() + UrlPath.number);
+            articleMapper.updateLikes(article);
+            userArticleLikesMapper.insertUserArticleLikes(userId,articleId);
+            isLike=false;
+        }else {
+            logger.info("撤销点赞成功");
+            article.setLikes(article.getLikes() - UrlPath.number);
+            articleMapper.updateLikes(article);
+            userArticleLikesMapper.deleteUserArticleLikes(userId,articleId);
+            isLike=true;
+        }
         if (userId != null) {
             UserRead userRead = userReadMapper.queryUserRead(userId, article.getType());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("type", 2);
             jsonObject.put("userId", userId);
             jsonObject.put("typeName", userRead.getTypeName());
-            jsonObject.put("likes", userRead.getLikes() + 1);
+            if(isLike==false){
+                jsonObject.put("likes", userRead.getLikes() + 1);
+            }else {
+                jsonObject.put("likes", userRead.getLikes() - 1);
+            }
             userReadMapper.updateUserRead(jsonObject);
             if (userRead.getTotalTimes() >= 20) {
                 List<UserRead> userReadList = userReadMapper.queryUserReadList(userId);
