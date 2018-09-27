@@ -2,8 +2,10 @@ package com.cb.web.zuitoutiao.service.impl;
 
 import com.cb.web.zuitoutiao.dao.ArticleCommentMapper;
 import com.cb.web.zuitoutiao.dao.CommentMapper;
+import com.cb.web.zuitoutiao.dao.UserCommentLikesMapper;
 import com.cb.web.zuitoutiao.entity.ArticleComment;
 import com.cb.web.zuitoutiao.entity.Comment;
+import com.cb.web.zuitoutiao.entity.UserCommentLikes;
 import com.cb.web.zuitoutiao.service.ArticleCommentService;
 import com.cb.web.zuitoutiao.utils.UrlPath;
 import org.slf4j.Logger;
@@ -26,6 +28,8 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
     private ArticleCommentMapper articleCommentMapper;
     @Autowired
     private CommentMapper commentMapper;
+    @Autowired
+    private UserCommentLikesMapper userCommentLikesMapper;
     private Logger logger = LoggerFactory.getLogger(ArticleCommentServiceImpl.class);
 
     /**
@@ -93,17 +97,35 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
      * @Date: 2018/8/21
      */
     @Override
-    public Integer updateLikes(Integer id, Integer type) {
+    public Integer updateLikes(Integer userId, Integer commentId, String type) {
         if (type == null) {
-            logger.info("给父评论点赞成功");
-            ArticleComment articleComment = articleCommentMapper.getArticleCommentById(id);
-            articleComment.setLikes(articleComment.getLikes() + UrlPath.number);
+            type = "3";
+        }
+        UserCommentLikes userCommentLikes = userCommentLikesMapper.getUserCommentLikes(userId, commentId, type);
+        if (type.equals("3")) {
+            ArticleComment articleComment = articleCommentMapper.getArticleCommentById(commentId);
+            if (userCommentLikes == null) {
+                logger.info("给父评论点赞成功");
+                articleComment.setLikes(articleComment.getLikes() + UrlPath.number);
+                userCommentLikesMapper.insertUserCommentLikes(userId, commentId, type);
+            } else {
+                logger.info("给父评论撤销点赞成功");
+                articleComment.setLikes(articleComment.getLikes() - UrlPath.number);
+                userCommentLikesMapper.deleteUserCommentLikes(userCommentLikes.getId());
+            }
             articleCommentMapper.updateLikes(articleComment);
-            return articleComment.getLikes() + UrlPath.number;
+            return articleComment.getLikes();
         } else {
-            logger.info("给子评论点赞成功");
-            Comment comment = commentMapper.getConmmentById(id);
-            comment.setLikes(comment.getLikes() + UrlPath.number);
+            Comment comment = commentMapper.getConmmentById(commentId);
+            if (userCommentLikes == null) {
+                logger.info("给子评论点赞成功");
+                comment.setLikes(comment.getLikes() + UrlPath.number);
+                userCommentLikesMapper.insertUserCommentLikes(userId, commentId, type);
+            } else {
+                logger.info("给子评论撤销点赞成功");
+                comment.setLikes(comment.getLikes() - UrlPath.number);
+                userCommentLikesMapper.deleteUserCommentLikes(userCommentLikes.getId());
+            }
             commentMapper.updateLikes(comment);
             return comment.getLikes();
         }

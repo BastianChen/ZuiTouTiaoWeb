@@ -19,7 +19,7 @@ public interface ArticleCommentService {
 
     void addSubreview(Comment comment);
 
-    Integer updateLikes(Integer id, Integer type);
+    Integer updateLikes(Integer userId,Integer commentId, String type);
 
     Integer updateDislikes(Integer id, Integer type);
 }

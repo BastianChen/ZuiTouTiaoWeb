@@ -107,13 +107,15 @@ public class ArticleCommentController {
     @RequestMapping(value = "/updateLikes", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ApiOperation(value="评论点赞接口", notes="根据评论的id以及type属性的值来辨别是给父评论进行点赞还是给子评论进行点赞")
     @ResponseBody
-    public Map<String, Object> updateLikes(@ApiParam(required=true, name="id", value="评论id")
-                            @RequestParam(value = "id", required = true) Integer id,
-                            @ApiParam(required=false, name="type", value="资讯类型（type为null时为给父评论点赞，type不为null时为给子评论点赞）")
-                            @RequestParam(value = "type", required = false) Integer type) {
+    public Map<String, Object> updateLikes(@ApiParam(required=true, name="userId", value="用户id")
+                            @RequestParam(value = "userId", required = true) Integer userId,
+                            @ApiParam(required=true, name="commentId", value="评论id（要跟数据库中type为2的id对应）")
+                            @RequestParam(value = "commentId", required = true) Integer commentId,
+                            @ApiParam(required=false, name="type", value="资讯类型（type为null时为给父评论点赞，type为1时为给普通的子评论点赞,type为2时给自评论中的回复评论点赞）")
+                            @RequestParam(value = "type", required = false) String type) {
         logger.info("给评论点赞");
         Map<String, Object> resultMap = new HashMap<>();
-        Integer likes = articleCommentService.updateLikes(id, type);
+        Integer likes = articleCommentService.updateLikes(userId,commentId,type);
         resultMap.put("likes",likes);
         return resultMap;
     }
