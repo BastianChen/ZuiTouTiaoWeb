@@ -70,6 +70,8 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
      */
     @Override
     public void addSubreview(Comment comment) {
+        comment.setLikes(0);
+        comment.setDislikes(0);
         Date date = new Date();
         String dateStr = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
         comment.setCreateDate(dateStr);
