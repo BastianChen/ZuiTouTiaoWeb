@@ -32,4 +32,6 @@ public interface UserService {
     void updatePassword(User user);
 
     Integer getUserTotalTimes(Integer userId);
+
+    User queryUserById(Integer userId);
 }

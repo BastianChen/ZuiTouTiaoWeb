@@ -156,4 +156,18 @@ public interface UserMapper {
     @Select({"select total_times from user where id = #{userId,jdbcType=INTEGER}"})
     @Results({@Result(column = "total_times", property = "totalTimes", jdbcType = JdbcType.INTEGER),})
     Integer getTotalTimes(Integer userId);
+
+    @Select({"select * from user where id = #{id,jdbcType=INTEGER}"})
+    @Results({@Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER),
+            @Result(column = "account_name", property = "accountName", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "password", property = "password", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "user_name", property = "userName", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "age", property = "age", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "gender", property = "gender", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "tel", property = "tel", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "email", property = "email", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "type", property = "type", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "image", property = "image", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "total_times", property = "totalTimes", jdbcType = JdbcType.VARCHAR),})
+    User queryUserById(Integer userId);
 }

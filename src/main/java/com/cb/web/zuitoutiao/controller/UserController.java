@@ -203,4 +203,14 @@ public class UserController {
     public void updatePassword(@ApiParam(required=true, name="user", value="用户") @RequestBody User user) {
         userService.updatePassword(user);
     }
+
+    @RequestMapping(value = "/getUserById", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    @ApiOperation(value="根据用户id获取用户接口", notes="根据用户id获取用户")
+    public Map<String, Object> getUserById(@ApiParam(required=true, name="userId", value="用户Id") @RequestParam Integer userId){
+        Map<String,Object> resultMap = new HashMap<>();
+        User user = userService.queryUserById(userId);
+        resultMap.put("user",user);
+        return resultMap;
+    }
 }

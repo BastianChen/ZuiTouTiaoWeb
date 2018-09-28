@@ -256,4 +256,10 @@ public class UserServiceImpl implements UserService {
         Integer totalTimes = userMapper.getTotalTimes(userId);
         return totalTimes;
     }
+
+    @Override
+    public User queryUserById(Integer userId) {
+        User user = userMapper.queryUserById(userId);
+        return user;
+    }
 }
