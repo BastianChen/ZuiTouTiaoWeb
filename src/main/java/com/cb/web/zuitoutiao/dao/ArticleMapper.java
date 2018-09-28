@@ -144,9 +144,24 @@ public interface ArticleMapper {
     * @Author: Chen Ben
     * @Date: 2018/8/29
     */
+//    @Select({"select distinct id,title,url,keywords,type,image_url,fangwenliang,time,likes,dislikes " +
+//            "from article where title like CONCAT('%',#{search,jdbcType=VARCHAR},'%') " +
+//            "or content like CONCAT('%',#{search,jdbcType=VARCHAR},'%') or keywords like CONCAT('%',#{search,jdbcType=VARCHAR},'%')" +
+//            " order by id desc limit #{start,jdbcType=INTEGER},20"})
+//    @Results({@Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER),
+//            @Result(column = "title", property = "title", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "url", property = "url", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "keywords", property = "keywords", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "type", property = "type", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "image_url", property = "imageUrl", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "fangwenliang", property = "fangwenliang", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "time", property = "time", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "likes", property = "likes", jdbcType = JdbcType.VARCHAR),
+//            @Result(column = "dislikes", property = "dislikes", jdbcType = JdbcType.VARCHAR),})
+//    List<Article> searchArticle(@Param("search") String search, @Param("start") Integer start);
+
     @Select({"select distinct id,title,url,keywords,type,image_url,fangwenliang,time,likes,dislikes " +
             "from article where title like CONCAT('%',#{search,jdbcType=VARCHAR},'%') " +
-            "or content like CONCAT('%',#{search,jdbcType=VARCHAR},'%') or keywords like CONCAT('%',#{search,jdbcType=VARCHAR},'%')" +
             " order by id desc limit #{start,jdbcType=INTEGER},20"})
     @Results({@Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER),
             @Result(column = "title", property = "title", jdbcType = JdbcType.VARCHAR),
