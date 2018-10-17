@@ -1,5 +1,6 @@
 package com.cb.web.zuitoutiao.controller;
 
+import com.cb.web.zuitoutiao.LoggerManage;
 import com.cb.web.zuitoutiao.service.ArticleService;
 import com.cb.web.zuitoutiao.service.UserArticleService;
 import com.cb.web.zuitoutiao.service.UserReadService;
@@ -107,6 +108,7 @@ public class ArticleController {
      */
     @RequestMapping(value = "/getArticleContent", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ResponseBody
+    @LoggerManage(logDescription = "查看资讯详情")
     @ApiOperation(value="查看资讯详情接口", notes="点击资讯列表获取资讯详细信息以及增加资讯访问量")
     public Map<String, Object> getArticleContent(@ApiParam(required=false, name="userId", value="用户id")
                                                  @RequestParam(value = "userId", required = false) Integer userId,

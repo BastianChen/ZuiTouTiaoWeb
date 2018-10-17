@@ -1,5 +1,6 @@
 package com.cb.web.zuitoutiao.controller;
 
+import com.cb.web.zuitoutiao.LoggerManage;
 import com.cb.web.zuitoutiao.entity.User;
 import com.cb.web.zuitoutiao.service.UserService;
 import com.cb.web.zuitoutiao.utils.CaptchaUtil;
@@ -60,6 +61,7 @@ public class UserController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
+    @LoggerManage(logDescription = "登陆")
     @ApiOperation(value="登陆接口", notes="登陆")
     public Map<String, Object> login(@ApiParam(required=true, name="accountName", value="账号")
                                      @RequestParam(value = "accountName", required = true) String accountName,
