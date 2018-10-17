@@ -1,10 +1,7 @@
 package com.cb.web.zuitoutiao;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -21,7 +18,8 @@ import java.time.LocalDateTime;
 public class LoggerAdvice {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Before("within(com.cb.web.zuitoutiao..*) && @annotation(loggerManage)")
+    //@Before("within(com.cb.web.zuitoutiao..*) && @annotation(loggerManage)")
+    @Before(value = "execution(* com.cb.web.zuitoutiao.controller.*.*(..)) && @annotation(loggerManage)")
     public void addBeforeLogger(JoinPoint joinPoint, LoggerManage loggerManage) {
         LocalDateTime now = LocalDateTime.now();
         logger.info(now.toString() + "执行[" + loggerManage.logDescription() + "]开始");
