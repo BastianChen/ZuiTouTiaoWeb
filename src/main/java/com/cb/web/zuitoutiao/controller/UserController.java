@@ -133,6 +133,7 @@ public class UserController {
      */
     @ApiIgnore
     @RequestMapping(value = "/getCaptcha", method = RequestMethod.GET)
+    @ApiOperation(value="账号登录验证码接口", notes="账号登录验证码")
     public void getCaptcha(HttpServletResponse response,String rad) throws IOException {
         logger.info("获取登陆验证码");
         CaptchaUtil captchaUtil = new CaptchaUtil();
