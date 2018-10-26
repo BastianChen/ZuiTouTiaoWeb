@@ -20,8 +20,8 @@ public interface UserArticleLikesMapper {
      * @Author: Chen Ben
      * @Date: 2018/9/27
      */
-    @Insert({"insert into user_article_likes(user_id,article_id) values (#{userId,jdbcType=INTEGER},#{articleId,jdbcType=INTEGER})"})
-    void insertUserArticleLikes(@Param("userId") Integer userId, @Param("articleId") Integer articleId);
+    @Insert({"insert into user_article_likes(user_id,article_id,type) values (#{userId,jdbcType=INTEGER},#{articleId,jdbcType=INTEGER},#{type,jdbcType=INTEGER})"})
+    void insertUserArticleLikes(@Param("userId") Integer userId, @Param("articleId") Integer articleId,@Param("type") String type);
 
     /**
      * @Description: 删除用户点赞记录
@@ -30,8 +30,8 @@ public interface UserArticleLikesMapper {
      * @Author: Chen Ben
      * @Date: 2018/9/27
      */
-    @Delete({"delete from user_article_likes where user_id = #{userId,jdbcType=INTEGER} and article_id = #{articleId,jdbcType=INTEGER}"})
-    int deleteUserArticleLikes(@Param("userId") Integer userId, @Param("articleId") Integer articleId);
+    @Delete({"delete from user_article_likes where user_id = #{userId,jdbcType=INTEGER} and article_id = #{articleId,jdbcType=INTEGER} and type = #{type,jdbcType=VARCHAR}"})
+    int deleteUserArticleLikes(@Param("userId") Integer userId, @Param("articleId") Integer articleId,@Param("type") String type);
 
     /**
      * @Description: 查询用户点赞记录
@@ -40,8 +40,9 @@ public interface UserArticleLikesMapper {
      * @Author: Chen Ben
      * @Date: 2018/9/27
      */
-    @Select({"select * from user_article_likes where user_id = #{userId,jdbcType=VARCHAR} and article_id = #{articleId,jdbcType=VARCHAR}"})
+    @Select({"select * from user_article_likes where user_id = #{userId,jdbcType=VARCHAR} and article_id = #{articleId,jdbcType=VARCHAR}" +
+            " and type = #{type,jdbcType=VARCHAR}"})
     @Results({@Result(column = "user_id", property = "userId", jdbcType = JdbcType.INTEGER),
             @Result(column = "article_id", property = "articleId", jdbcType = JdbcType.INTEGER),})
-    UserArticleLikes getUserArticleLikes(@Param("userId") Integer userId, @Param("articleId") Integer articleId);
+    UserArticleLikes getUserArticleLikes(@Param("userId") Integer userId, @Param("articleId") Integer articleId,@Param("type") String type);
 }

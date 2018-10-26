@@ -324,19 +324,19 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Integer updateLikes(Integer articleId, Integer userId) {
         boolean isLike;
-        UserArticleLikes userArticleLikes = userArticleLikesMapper.getUserArticleLikes(userId,articleId);
+        UserArticleLikes userArticleLikes = userArticleLikesMapper.getUserArticleLikes(userId,articleId,"1");
         Article article = articleMapper.getArticleById(articleId);
         if(userArticleLikes == null){
             logger.info("点赞成功");
             article.setLikes(article.getLikes() + UrlPath.number);
             articleMapper.updateLikes(article);
-            userArticleLikesMapper.insertUserArticleLikes(userId,articleId);
+            userArticleLikesMapper.insertUserArticleLikes(userId,articleId,"1");
             isLike=false;
         }else {
             logger.info("撤销点赞成功");
             article.setLikes(article.getLikes() - UrlPath.number);
             articleMapper.updateLikes(article);
-            userArticleLikesMapper.deleteUserArticleLikes(userId,articleId);
+            userArticleLikesMapper.deleteUserArticleLikes(userId,articleId,"1");
             isLike=true;
         }
         if (userId != null) {
@@ -385,16 +385,33 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Integer updateDislikes(Integer articleId, Integer userId) {
+        boolean isDislike;
+        UserArticleLikes userArticleLikes = userArticleLikesMapper.getUserArticleLikes(userId,articleId,"2");
         Article article = articleMapper.getArticleById(articleId);
-        article.setDislikes(article.getDislikes() + UrlPath.number);
-        articleMapper.updateDislikes(article);
+        if(userArticleLikes == null){
+            logger.info("点踩成功");
+            article.setDislikes(article.getDislikes() + UrlPath.number);
+            articleMapper.updateDislikes(article);
+            userArticleLikesMapper.insertUserArticleLikes(userId,articleId,"2");
+            isDislike=false;
+        }else {
+            logger.info("撤销点踩成功");
+            article.setDislikes(article.getDislikes() - UrlPath.number);
+            articleMapper.updateDislikes(article);
+            userArticleLikesMapper.deleteUserArticleLikes(userId,articleId,"2");
+            isDislike=true;
+        }
         if (userId != null) {
             UserRead userRead = userReadMapper.queryUserRead(userId, article.getType());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("type", 3);
             jsonObject.put("userId", userId);
             jsonObject.put("typeName", userRead.getTypeName());
-            jsonObject.put("dislikes", userRead.getDislikes() + 1);
+            if(isDislike==false){
+                jsonObject.put("dislikes", userRead.getDislikes() + 1);
+            }else {
+                jsonObject.put("dislikes", userRead.getDislikes() - 1);
+            }
             userReadMapper.updateUserRead(jsonObject);
             if (userRead.getTotalTimes() >= 20) {
                 List<UserRead> userReadList = userReadMapper.queryUserReadList(userId);
