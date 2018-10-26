@@ -16,7 +16,7 @@ public class ArticleProvider {
      * @Date: 2018/8/29
      */
     public String getArticleByType(JSONObject inputParams) {
-        String sql = " select distinct id,title,url,keywords,type,image_url,fangwenliang,time,likes,dislikes " +
+        String sql = " select distinct id,title,url,content,keywords,type,image_url,fangwenliang,time,likes,dislikes " +
                 "from article";
         String type = inputParams.optString("type");
         Integer start = inputParams.getInt("start");
@@ -36,7 +36,7 @@ public class ArticleProvider {
      * @Date: 2018/8/29
      */
     public String queryArticle(JSONObject inputParams) {
-        String sql = " select distinct id,title,url,keywords,type,image_url,fangwenliang,time,likes,dislikes " +
+        String sql = " select distinct id,title,url,content,keywords,type,image_url,fangwenliang,time,likes,dislikes " +
                 "from article";
         String type = inputParams.optString("type");
         Integer start = inputParams.getInt("start");
